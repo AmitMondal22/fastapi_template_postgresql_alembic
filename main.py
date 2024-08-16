@@ -6,7 +6,7 @@ from json import JSONEncoder
 from decimal import Decimal
 from datetime import date, datetime, timedelta
 import uvicorn
-from config.database import Session, engine, Base
+from config.database import SessionLocal, engine, Base
 
 
 from routers.auth_routes import auth_routes

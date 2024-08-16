@@ -14,5 +14,6 @@ database_port     = 5432         # Default PostgreSQL port
 engine = create_engine(f'postgresql://{database_username}:{database_password}@{database_ip}:{database_port}/{database_name}')
 
 # SQLAlchemy session and base class
-Session = sessionmaker(bind=engine)
+SessionLocal = sessionmaker(bind=engine)
 Base = declarative_base()
+

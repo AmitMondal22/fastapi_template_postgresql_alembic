@@ -1,8 +1,8 @@
 from fastapi import HTTPException
-from config.database import Session
+from config.database import SessionLocal
 from app.services.ClientService import ClientService
 
-db = Session()
+db = SessionLocal()
 async def add_client(user_credentials,params):
     try:
         # Create SQLAlchemy model instance

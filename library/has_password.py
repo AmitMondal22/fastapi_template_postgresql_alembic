@@ -5,6 +5,7 @@ pwd_context = CryptContext(schemes=["bcrypt"], deprecated="auto")
 
 # Function to hash a password
 def get_password_hash(password: str) -> str:
+    print(pwd_context.hash(password))
     return pwd_context.hash(password)
 
 # Function to verify a password

@@ -1,15 +1,20 @@
-from fastapi import HTTPException
-from config.database import Session
+from fastapi import HTTPException, Depends
+from config.database import SessionLocal
+from sqlalchemy.orm import Session
 from library.has_password import verify_password
 from library.jwt_token import create_access_token
 
-from app.models import UserModel
+from schemas import AuthSchemas
 
 from app.services.UserService import UserService
 
-db = Session()
+
+db = SessionLocal()
+
+        
+        
 @staticmethod
-async def login(user:UserModel.Login):
+async def login(user:AuthSchemas.Login):
     try:
         emailchecked = UserService(db).get_user(user.user_name)
         print(emailchecked)
@@ -29,7 +34,7 @@ async def login(user:UserModel.Login):
         raise HTTPException(status_code=500, detail="Internal server error")
     
 @staticmethod
-async def register(register_data:UserModel.Register):
+async def register(register_data:AuthSchemas.Register):
     try:
         # Create SQLAlchemy model instance
         db_user=UserService(db).create_user(register_data)

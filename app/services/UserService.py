@@ -54,9 +54,10 @@ class UserService():
             mobile_no=user.mobile_no,
             user_email=user.email,
             email_verified_at=get_current_datetime(),
-            user_role=user.user_role,
+            user_type=user.user_role,
             password=get_password_hash(user.password)
         )
+        print(db_user)
         self.db.add(db_user)
         self.db.commit()
         self.db.refresh(db_user)
